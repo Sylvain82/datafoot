@@ -32,13 +32,10 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
     document.createTextNode(json.response[i].fixture.status.elapsed),
 
     ]
-    const buthome = json.response[i].goals.home
-
-    console.log(buthome)
 
     let textNode1 = [
         document.createTextNode(json.response[i].teams.home.name),
-        document.createTextNode(buthome),
+        document.createTextNode(json.response[i].goals.home),
         document.createTextNode(json.response[i].goals.away),
         document.createTextNode(json.response[i].teams.away.name),
     ]
@@ -86,8 +83,8 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
     tr.appendChild(td);
 
     }
+
 })
     .catch(err => {
     console.error(err);
 });
-
