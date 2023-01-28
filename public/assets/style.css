@@ -2193,7 +2193,7 @@ section.team h4 {
 
 /**************PAGE LIVE****************/
 #liveheader header{
-	background: url("../assets/images/bg1.png");
+	background: url("../assets/images/about.jpeg");
 }
 
 #liveTable{
@@ -2244,5 +2244,5 @@ section.team h4 {
 }
 /********************** PAGE CONTACT **********************/
 #contactheader header{
-	background: url("../assets/images/bg1.png");
+	background: url("../assets/images/about.jpeg");
 }
