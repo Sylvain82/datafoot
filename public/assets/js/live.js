@@ -23,7 +23,9 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
         console.log(json.response[0])
 
     const tbody = document.querySelector('#liveTable tbody');
-    for (i=0 ; i<json.response.length; i++){
+
+
+        for (i=0 ; i<json.response.length; i++){
 
 
     let textNode = [
@@ -82,9 +84,13 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
     tbody.appendChild(tr);
     tr.appendChild(td);
 
-    }
 
-})
-    .catch(err => {
+
+        }
+
+    })
+
+.catch(err => {
     console.error(err);
 });
+

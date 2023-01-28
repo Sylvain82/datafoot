@@ -2196,6 +2196,10 @@ section.team h4 {
 	background: url("../assets/images/bg1.png");
 }
 
+#liveTable{
+	margin-top: 150px;
+}
+
 #live {
 	text-align: center;
 	font-size: 25px;
@@ -2220,6 +2224,24 @@ section.team h4 {
 	margin-top: 151px;
 }
 
+/********************** PAGE TOP SCORES / ASSISTS **********************/
+
+
+#topscorers img ,#topassists img{
+	width: 50px;
+	border-radius: 5px;
+}
+#topscorers td , #topassists td{
+
+	margin : auto;
+}
+#topbuts form {
+	margin-top: 120px;
+}
+
+#topbuts table{
+	margin-top: 10px;
+}
 /********************** PAGE CONTACT **********************/
 #contactheader header{
 	background: url("../assets/images/bg1.png");
