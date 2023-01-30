@@ -1,13 +1,9 @@
-
-
 const options = {
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': 'f8602f40b0mshda89fc84d2b8fd7p1d230ejsn0863e51df899',
         'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
-
     }
-
 };
 // *************************************************************
 // DATE DU JOUR
@@ -83,8 +79,6 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
     td.appendChild(image2);
     tbody.appendChild(tr);
     tr.appendChild(td);
-
-
 
         }
 
