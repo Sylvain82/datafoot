@@ -2190,7 +2190,10 @@ section.team h4 {
     font-weight: 500;
     margin-top: 10px !important;
 }
-
+/**************PAGE HOME****************/
+#resume table{
+	margin-top: 0;
+}
 /**************PAGE LIVE****************/
 #liveheader header{
 	background: url("../assets/images/about.jpeg");
