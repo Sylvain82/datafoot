@@ -2191,8 +2191,12 @@ section.team h4 {
     margin-top: 10px !important;
 }
 /**************PAGE HOME****************/
+#resume {
+	margin-top: 100px;
+}
+
 #resume table{
-	margin-top: 0;
+	margin-top: 168px;
 }
 /**************PAGE LIVE****************/
 #liveheader header{
