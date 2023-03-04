@@ -8,9 +8,14 @@ const options = {
 // *************************************************************
 // DATE DU JOUR
 const MyDate = new Date();
-MyDateString = (MyDate.getFullYear()) + "-"
-    + ("0" + (MyDate.getMonth()) + 1).slice(-2) + "-"
-    + ("0" + MyDate.getDate()).slice(-2);
+MyDateString = MyDate.toISOString().slice(0,10)
+// MyDateString = (MyDate.getFullYear()) + "-"
+//     + ("0" + (MyDate.getMonth()) + 1) + "-"
+//     + ("0" + MyDate.getDate()).slice(-2);
+
+console.log(MyDate.toISOString().slice(0,10))
+console.log(MyDateString)
+
 // *************************************************************
 
 fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, options)
