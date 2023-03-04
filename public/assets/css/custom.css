@@ -204,12 +204,7 @@
      float: left;
      width: 100%;
 }
- .logo {
-     float: left;
-     padding: 7px 0 6px;
-     margin: 0 0 0 0px;
-     position: relative;
-}
+
  .menu {
      float: left;
      width: 100%;
@@ -1775,17 +1770,6 @@ body section#contant .post-info span h4 {
  @media (max-width:768px) {
      .header-top .right_top_section {
          display: none;
-    }
-     .logo {
-         float: left;
-         padding: 15px 0 10px;
-         margin: 0 0 0 0px;
-         position: relative;
-         width: 100%;
-         text-align: center;
-    }
-     .logo img {
-         width: 160px;
     }
      .main-menu-section {
          float: right;
