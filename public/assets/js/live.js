@@ -27,7 +27,10 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
 
         for (i=0 ; i<json.response.length; i++){
+            if ((json.response[i].fixture.status.elapsed) ) {
+               if (json.response[i].league.country === ("France") ) {
 
+                // if (json.response[i].league.country === ("France") || (json.response[i].league.country === "Spain")  || (json.response[i].league.country === "England")) {
 
     let textNode = [
     document.createTextNode(json.response[i].league.country),
@@ -87,7 +90,7 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
         }
 
-    })
+    }}})
 
 .catch(err => {
     console.error(err);
