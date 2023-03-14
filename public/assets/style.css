@@ -2210,7 +2210,7 @@ section.team h4 {
 }
 
 #liveTable tbody tr, #liveTable tbody td,#liveTable tr th {
-	font-size: 7px;
+	font-size: 8px;
 }
 
 #live {
@@ -2238,7 +2238,7 @@ section.team h4 {
 
 
 #topscorers img ,#topassists img{
-	width: 50px;
+	width: 20px;
 	border-radius: 5px;
 }
 #topscorers td , #topassists td{
@@ -2252,9 +2252,12 @@ section.team h4 {
 }
 #topbuts table{
 	margin-top: 10px;
+	font-size: 8px;
+
 }
 #topassists table{
 	margin-top: 0;
+	font-size: 8px;
 }
 /********************** PAGE CONTACT **********************/
 #contactheader header{
