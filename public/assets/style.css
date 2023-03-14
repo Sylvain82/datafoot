@@ -2205,6 +2205,12 @@ section.team h4 {
 
 #liveTable{
 	margin-top: 150px;
+	text-align: center;
+
+}
+
+#liveTable tbody tr, #liveTable tbody td,#liveTable tr th {
+	font-size: 7px;
 }
 
 #live {
@@ -2215,11 +2221,8 @@ section.team h4 {
 
 }
 
-#liveTable{
-	text-align: center;
-}
 #liveTable img{
-	width: 50px;
+	width: 20px;
 }
 .liveTitle{
 	text-align: center;
