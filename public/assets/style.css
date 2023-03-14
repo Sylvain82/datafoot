@@ -2210,7 +2210,7 @@ section.team h4 {
 }
 
 #liveTable tbody tr, #liveTable tbody td,#liveTable tr th {
-	font-size: 8px;
+	font-size: 9px;
 }
 
 #live {
@@ -2252,12 +2252,12 @@ section.team h4 {
 }
 #topbuts table{
 	margin-top: 10px;
-	font-size: 8px;
+	font-size: 9px;
 
 }
 #topassists table{
 	margin-top: 0;
-	font-size: 8px;
+	font-size: 9px;
 }
 /********************** PAGE CONTACT **********************/
 #contactheader header{
