@@ -11,19 +11,19 @@ fetch('https://free-football-soccer-videos1.p.rapidapi.com/v1/', options)
     .then(response => {
 
         console.log(response)
-
-
-
 const tbody = document.querySelector('#ResumeTable tbody');
 
 for (i=0 ; i<response.length; i++){
 
-const lien = (response[i].url)
+    if ((response[i].competition.name=== "ITALY: Serie A") || (response[i].competition.name=== "FRANCE: Ligue 1") ||(response[i].competition.name=== "ENGLAND: Premier League") || (response[i].competition.name=== "SPAIN: La Liga") ){
+
+    let link = response[i].url;
 
     let textNode = [
+
         document.createTextNode(response[i].title),
         document.createTextNode(response[i].competition.name),
-        document.createTextNode(lien),
+        document.createTextNode(link),
 
     ]
 
@@ -35,5 +35,5 @@ const lien = (response[i].url)
         tr.appendChild(td);
 
     }}
-
+    }
     })

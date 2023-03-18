@@ -2234,7 +2234,7 @@ section.team h4 {
 	margin-top: 151px;
 }
 
-/********************** PAGE TOP SCORES / ASSISTS **********************/
+/********************** PAGE TOP SCORES / ASSISTS / RESUME **********************/
 
 
 #topscorers img ,#topassists img{
@@ -2255,7 +2255,7 @@ section.team h4 {
 	font-size: 9px;
 
 }
-#topassists table{
+#topassists table ,  #resume {
 	margin-top: 0;
 	font-size: 9px;
 }
