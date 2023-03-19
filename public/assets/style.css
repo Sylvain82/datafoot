@@ -2198,6 +2198,11 @@ section.team h4 {
 #resume table{
 	margin-top: 168px;
 }
+
+.banner-homepage img{
+	margin-top: 140px;
+	width: 100%;
+}
 /**************PAGE LIVE****************/
 #liveheader header{
 	background: url("../assets/images/about.jpeg");
