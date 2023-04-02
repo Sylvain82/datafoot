@@ -41,7 +41,14 @@
                 let textNode = [
                     document.createTextNode(json.response[i].player.name),
                     document.createTextNode(json.response[i].statistics[0].team.name),
+
+                ]
+
+                let textNode2 = [
                     document.createTextNode(json.response[i].statistics[0].goals.total),
+                ]
+                let textNode3 = [
+
                     document.createTextNode(Math.round((buts) / (json.response[i].statistics[0].games.lineups) * 100) / 100),
                     document.createTextNode(json.response[i].statistics[0].games.lineups),
                     document.createTextNode(json.response[i].player.age),
@@ -49,7 +56,21 @@
                     document.createTextNode(json.response[i].player.weight),
                     document.createTextNode(json.response[i].player.nationality),
                 ]
+
                 for (let text of textNode) {
+                    td = document.createElement('td');
+                    td.appendChild(text);
+                    tbody.appendChild(tr);
+                    tr.appendChild(td);
+                }
+                for (let text of textNode2) {
+                    td = document.createElement('td');
+                    td.appendChild(text);
+                    td.style.color = '#00FF00'
+                    tbody.appendChild(tr);
+                    tr.appendChild(td);
+                }
+                for (let text of textNode3) {
                     td = document.createElement('td');
                     td.appendChild(text);
                     tbody.appendChild(tr);

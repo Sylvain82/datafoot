@@ -66,9 +66,9 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
     tbody.appendChild(tr);
 
     if (temps > 89) {
-    td.style.color = "green";
+    td.style.color = "#white";
     }else {
-        td.style.color = "orange";
+        td.style.color = "#00FF00";
     }
 
     tr.appendChild(td);
