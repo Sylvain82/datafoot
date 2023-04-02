@@ -31,11 +31,17 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
                  if (json.response[i].league.country === ("France") || (json.response[i].league.country === "Spain")  || (json.response[i].league.country === "England") || (json.response[i].league.country === "Germany") || (json.response[i].league.country === "Italy")) {
 
+                      let temps = (json.response[i].fixture.status.elapsed)
+
     let textNode = [
 
     document.createTextNode(json.response[i].league.country),
     document.createTextNode(json.response[i].league.name),
-    document.createTextNode(json.response[i].fixture.status.elapsed),
+
+    ]
+
+    let textNodeTemps =[
+    document.createTextNode(temps),
 
     ]
 
@@ -53,6 +59,22 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
     tbody.appendChild(tr);
     tr.appendChild(td);
     }
+
+    for (let text of textNodeTemps) {
+    td = document.createElement('td');
+    td.appendChild(text);
+    tbody.appendChild(tr);
+
+    if (temps > 89) {
+    td.style.color = "green";
+    }else {
+        td.style.color = "orange";
+    }
+
+    tr.appendChild(td);
+
+    }
+
         let image3 = document.createElement('img');
         image3.src = json.response[i].teams.home.logo;
         td = document.createElement('td');
