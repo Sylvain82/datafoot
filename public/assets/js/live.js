@@ -27,22 +27,37 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
 
         for (i=0 ; i<json.response.length; i++){
-            if ((json.response[i].fixture.status.elapsed) && (json.response[i].fixture.status.long !== ("Match Finished"))) {
+            if ((json.response[i].fixture.status.elapsed) ) {
 
                  if (json.response[i].league.country === ("France") || (json.response[i].league.country === "Spain")  || (json.response[i].league.country === "England") || (json.response[i].league.country === "Germany") || (json.response[i].league.country === "Italy")) {
 
-                      let temps = (json.response[i].fixture.status.elapsed)
+    let temps = (json.response[i].fixture.status.elapsed)
 
     let textNode = [
-
-    document.createTextNode(json.response[i].league.country),
-    document.createTextNode(json.response[i].league.name),
-
+        document.createTextNode(json.response[i].league.country),
     ]
+     let tr = document.createElement('tr');
+     for (let text of textNode) {
+         td = document.createElement('td');
+         td.appendChild(text);
+         tbody.appendChild(tr);
+         tr.appendChild(td);
+     }
+     let image5 = document.createElement('img');
+    if (json.response[i].fixture.status.long !== ("Match Finished")) {
+        image5.src = "https://aniportalimages.s3.amazonaws.com/static/img/red-dot.gif";
+    }else {
+        image5.src = "../assets/images/ok.png";
+    }
+     td = document.createElement('td');
+     td.appendChild(image5);
+     tbody.appendChild(tr);
+     tr.appendChild(td);
 
-    let textNodeTemps =[
+
+
+    let textNodeTemps = [
     document.createTextNode(temps),
-
     ]
 
     let textNode1 = [
@@ -52,13 +67,7 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
         document.createTextNode(json.response[i].teams.away.name),
     ]
 
-    let tr = document.createElement('tr');
-    for (let text of textNode) {
-    td = document.createElement('td');
-    td.appendChild(text);
-    tbody.appendChild(tr);
-    tr.appendChild(td);
-    }
+
 
     for (let text of textNodeTemps) {
     td = document.createElement('td');
@@ -67,6 +76,7 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
     if (temps > 89) {
     td.style.color = "#white";
+
     }else {
         td.style.color = "#00FF00";
     }
