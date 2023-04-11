@@ -28,8 +28,17 @@ function loadChampionnat() {
             let tr = document.createElement('tr');
 
                 let textNode = [
+
+                    document.createTextNode(i+1),
                     document.createTextNode(json.response[0].league.standings[0][i].team.name),
                     document.createTextNode(json.response[0].league.standings[0][i].points),
+                    document.createTextNode(json.response[0].league.standings[0][i].all.played),
+                    document.createTextNode(json.response[0].league.standings[0][i].all.win),
+                    document.createTextNode(json.response[0].league.standings[0][i].all.draw),
+                    document.createTextNode(json.response[0].league.standings[0][i].all.lose),
+                    document.createTextNode(json.response[0].league.standings[0][i].all.goals.for),
+                    document.createTextNode(json.response[0].league.standings[0][i].all.goals.against),
+                    document.createTextNode(json.response[0].league.standings[0][i].form),
 
                 ]
                 for (let text of textNode) {
