@@ -2203,6 +2203,12 @@ section.team h4 {
 	margin-top: 140px;
 	width: 100%;
 }
+
+@media only screen and (min-width: 764px) {
+	.banner-homepage img{
+		display: none;
+	}
+}
 /**************PAGE LIVE****************/
 #liveheader header{
 	background: url("../assets/images/about.jpeg");
@@ -2260,7 +2266,7 @@ section.team h4 {
 	font-size: 9px;
 
 }
-#topassists table ,  #resume {
+#classements table, #topassists table ,  #resume {
 	margin-top: 0;
 	font-size: 9px;
 }
