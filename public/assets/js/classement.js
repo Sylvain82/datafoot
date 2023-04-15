@@ -30,6 +30,55 @@ function loadChampionnat() {
                 let textNode = [
 
                     document.createTextNode(i+1),
+
+                ]
+                for (let text of textNode) {
+                    td = document.createElement('td');
+
+                    if (json.response[0].league.standings[0][i].description === "Promotion - Champions League (Group Stage: )"
+                    )
+                    {
+                        td.style.color = "#0cf51f"
+                    }else{
+                        td.style.color = "#ff0000"
+
+                    }
+
+                    if (json.response[0].league.standings[0][i].description === "Promotion - Champions League (Qualification: )")
+                    {
+                        td.style.color = "#0c7c22"
+                    }
+
+                    if (json.response[0].league.standings[0][i].description === "Promotion - Europa League (Group Stage: )")
+                    {
+                        td.style.color = "#f6b930"
+                    }
+
+                    if (json.response[0].league.standings[0][i].description === "Promotion - Europa Conference League (Qualification: )")
+                    {
+                        td.style.color = "#e3ef39"
+                    }
+
+                    if (json.response[0].league.standings[0][i].description == null)
+                    {
+                        td.style.color = "#FFFFFF"
+                    }
+
+                    td.appendChild(text);
+
+                    tbody.appendChild(tr);
+                    tr.appendChild(td);
+                }
+
+                let logo = document.createElement('img');
+                logo.src = json.response[0].league.standings[0][i].team.logo;
+                td = document.createElement('td');
+                td.appendChild(logo);
+                tbody.appendChild(tr);
+                tr.appendChild(td);
+
+                let textNode2 = [
+
                     document.createTextNode(json.response[0].league.standings[0][i].team.name),
                     document.createTextNode(json.response[0].league.standings[0][i].points),
                     document.createTextNode(json.response[0].league.standings[0][i].all.played),
@@ -41,47 +90,12 @@ function loadChampionnat() {
                     document.createTextNode(json.response[0].league.standings[0][i].form),
 
                 ]
-                for (let text of textNode) {
+
+
+
+                for (let text of textNode2) {
                     td = document.createElement('td');
-
-                    if (json.response[0].league.standings[0][i].description === "Promotion - Champions League (Group Stage: )"
-                    )
-                    {
-                        td.style.color = "#0CF5E4"
-                    }else{
-                        td.style.color = "#F97168"
-
-                    }
-
-                    if (json.response[0].league.standings[0][i].description === "Promotion - Champions League (Qualification: )")
-                    {
-                        td.style.color = "#50A0F0"
-                    }
-
-                    if (json.response[0].league.standings[0][i].description === "Promotion - Europa League (Group Stage: )")
-                    {
-                        td.style.color = "#8F3DF3"
-                    }
-
-                    if (json.response[0].league.standings[0][i].description === "Promotion - Europa Conference League (Qualification: )")
-                    {
-                        td.style.color = "#B0789B"
-                    }
-
-                    if (json.response[0].league.standings[0][i].description == null)
-                    {
-                        td.style.color = "#FFFFFF"
-                    }
-
-                    // let str = json.response[0].league.standings[0][i].description;
-                    // // if (str.indexOf("Relegation") !== -1)
-                    // {
-                    //     td.style.color = "#FFFFFF"
-                    // }
-
-
                     td.appendChild(text);
-
                     tbody.appendChild(tr);
                     tr.appendChild(td);
                 }

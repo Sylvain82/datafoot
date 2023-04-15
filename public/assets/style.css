@@ -2101,7 +2101,7 @@ aside#sidebar .team-btw-match ul li.vs span {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: #fff;
+	background: #333;
 	z-index: 11000;
 	position: fixed;
 	display: block
@@ -2113,7 +2113,7 @@ aside#sidebar .team-btw-match ul li.vs span {
 	left: 1%;
 	right: 1%;
 	top: 25%;
-	width: 320px;
+	width: 150px;
 	background: center center no-repeat none;
 	background-size: auto auto;
 	background-size: 95px 95px;
