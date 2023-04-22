@@ -2274,3 +2274,12 @@ section.team h4 {
 #contactheader header{
 	background: url("../assets/images/about.jpeg");
 }
+
+
+.consonne{
+	color:blue;
+}
+
+.voyelle{
+	color:red
+}

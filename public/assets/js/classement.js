@@ -4,7 +4,6 @@ let championnat = document.getElementById('mySelect').value;
 loadChampionnat(championnat);
 selectElement.addEventListener('change', () => {
     championnat = document.getElementById('mySelect').value;
-    //console.log(championnat);
     loadChampionnat(championnat);
 })
 function loadChampionnat() {
@@ -87,10 +86,13 @@ function loadChampionnat() {
                     document.createTextNode(json.response[0].league.standings[0][i].all.lose),
                     document.createTextNode(json.response[0].league.standings[0][i].all.goals.for),
                     document.createTextNode(json.response[0].league.standings[0][i].all.goals.against),
-                    document.createTextNode(json.response[0].league.standings[0][i].form),
+                    document.createTextNode((json.response[0].league.standings[0][i].all.goals.for)-(json.response[0].league.standings[0][i].all.goals.against)),
 
                 ]
 
+                let textNode3 = [
+                    document.createTextNode(json.response[0].league.standings[0][i].form),
+                ]
 
 
                 for (let text of textNode2) {
@@ -99,6 +101,15 @@ function loadChampionnat() {
                     tbody.appendChild(tr);
                     tr.appendChild(td);
                 }
+
+                for (let text of textNode3) {
+                    td = document.createElement('td');
+                    td.appendChild(text);
+                    tbody.appendChild(tr);
+                    tr.appendChild(td);
+                }
+
+
             }
         })
         .catch(err => {
