@@ -1,4 +1,5 @@
 const name = document.getElementById('name')
+const stats = document.getElementById('stats')
 const selectElement = document.querySelector('.selector');
 let championnat = document.getElementById('mySelect').value;
 loadChampionnat(championnat);
@@ -106,9 +107,53 @@ function loadclub(club){
 
            })
 
+
         .catch(err => console.error(err));
 
 
-}
+        fetch(`https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=${championnat}&season=2022&team=${club}`, options)
+        .then(response => response.json())
+        .then(json => {
+            console.log(json.response.league.name)
+            while (stats.firstChild) {
+                stats.removeChild(stats.firstChild);
+            }
+
+            let logoligue = document.createElement('img');
+            logoligue.setAttribute("id","logoligue")
+            logoligue.src = json.response.league.logo;
+            stats.appendChild(logoligue);
+
+            let liguename = document.createElement('p');
+            liguename.innerText = json.response.league.name;
+            stats.appendChild(liguename);
+
+            let ligueseason = document.createElement('p');
+            ligueseason.innerText = json.response.league.season;
+            stats.appendChild(ligueseason);
+
+            let ligueform = document.createElement('p');
+            ligueform.innerText = json.response.form;
+            stats.appendChild(ligueform);
+
+            let liguematchs = document.createElement('p');
+            liguematchs.innerText = json.response.fixtures.played.total;
+            stats.appendChild(liguematchs);
+
+            let liguewin = document.createElement('p');
+            liguewin.innerText = json.response.fixtures.wins.total;
+            stats.appendChild(liguewin);
+
+            let liguedraw = document.createElement('p');
+            liguedraw.innerText = json.response.fixtures.draws.total;
+            stats.appendChild(liguedraw);
+
+            let ligueloses = document.createElement('p');
+            ligueloses.innerText = json.response.fixtures.loses.total;
+            stats.appendChild(ligueloses);
+        });
+
+
+    }
 
 }
