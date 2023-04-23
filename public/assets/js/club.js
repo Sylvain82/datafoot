@@ -1,9 +1,12 @@
-
+const name = document.getElementById('name')
 const selectElement = document.querySelector('.selector');
 let championnat = document.getElementById('mySelect').value;
 loadChampionnat(championnat);
 selectElement.addEventListener('change', () => {
     championnat = document.getElementById('mySelect').value;
+    while (name.firstChild) {
+        name.removeChild(name.firstChild);
+    }
     //console.log(championnat);
     loadChampionnat(championnat);
 })
@@ -20,10 +23,15 @@ function loadChampionnat() {
         .then(response => response.json())
         .then(json => {
                 const select = document.getElementById('selectClub')
+            while (name.firstChild) {
+                name.removeChild(name.firstChild);
+            }
             while (select.firstChild) {
                 select.removeChild(select.firstChild);
             }
-
+            while (name.firstChild) {
+                name.removeChild(name.firstChild);
+            }
             for (i = 0;  json.response.length; i++) {
                 // let arr = json.response[0].league.standings[0][i].team.name
                     let opt = document.createElement('option');
@@ -44,6 +52,10 @@ const selectClub = document.querySelector('.selectionClub');
 let club = document.getElementById('selectClub').value;
 loadclub(club);
 selectClub.addEventListener('change', () => {
+    while (name.firstChild) {
+        name.removeChild(name.firstChild);
+    }
+
     club = document.getElementById('selectClub').value;
     loadclub(club);
 })
@@ -61,10 +73,13 @@ function loadclub(club){
         .then(json => {
                 // let nom = json.response[0].team.name
 
-            const name = document.getElementById('name')
                 // name.removeChild();
+            while (name.firstChild) {
+                name.removeChild(name.firstChild);
+            }
 
             let logo = document.createElement('img');
+            logo.setAttribute("id","logoclub")
             logo.src = json.response[0].team.logo;
             name.appendChild(logo);
 
@@ -83,6 +98,11 @@ function loadclub(club){
             let naissance = document.createElement("p")
             naissance.innerText = json.response[0].team.founded;
             name.appendChild(naissance)
+
+            let photo = document.createElement('img');
+            photo.setAttribute("id","photostade")
+            photo.src = json.response[0].venue.image;
+            name.appendChild(photo);
 
            })
 
