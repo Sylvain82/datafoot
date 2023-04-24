@@ -69,6 +69,7 @@ function loadclub(club){
         }
     };
 
+
     fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?id=${club}`, options)
         .then(response => response.json())
         .then(json => {
@@ -96,8 +97,12 @@ function loadclub(club){
             stade.innerText = json.response[0].venue.name;
             name.appendChild(stade)
 
+            let places = document.createElement("p")
+            places.innerText = `${json.response[0].venue.capacity} Places `;
+            name.appendChild(places)
+
             let naissance = document.createElement("p")
-            naissance.innerText = json.response[0].team.founded;
+            naissance.innerText = `Date de fondation : ${json.response[0].team.founded}`
             name.appendChild(naissance)
 
             let photo = document.createElement('img');
@@ -125,31 +130,32 @@ function loadclub(club){
             stats.appendChild(logoligue);
 
             let liguename = document.createElement('p');
-            liguename.innerText = json.response.league.name;
+            liguename.innerText = `Championnat : ${json.response.league.name}`;
             stats.appendChild(liguename);
 
             let ligueseason = document.createElement('p');
-            ligueseason.innerText = json.response.league.season;
+            ligueseason.innerText =  `Saison : ${json.response.league.season}` ;
             stats.appendChild(ligueseason);
 
             let ligueform = document.createElement('p');
-            ligueform.innerText = json.response.form;
+            ligueform.innerText = `Derniers résultats : ${json.response.form.match(/.{1,1}/g).slice( (json.response.form.match(/.{1,1}/g).length) -5 , json.response.form.match(/.{1,1}/g).length )}`;
             stats.appendChild(ligueform);
+            console.log(json.response.form)
 
             let liguematchs = document.createElement('p');
-            liguematchs.innerText = json.response.fixtures.played.total;
+            liguematchs.innerText = `Matchs joués : ${json.response.fixtures.played.total}` ;
             stats.appendChild(liguematchs);
 
             let liguewin = document.createElement('p');
-            liguewin.innerText = json.response.fixtures.wins.total;
+            liguewin.innerText = `Victoires : ${json.response.fixtures.wins.total}` ;
             stats.appendChild(liguewin);
 
             let liguedraw = document.createElement('p');
-            liguedraw.innerText = json.response.fixtures.draws.total;
+            liguedraw.innerText = `Nuls : ${json.response.fixtures.draws.total}`;
             stats.appendChild(liguedraw);
 
             let ligueloses = document.createElement('p');
-            ligueloses.innerText = json.response.fixtures.loses.total;
+            ligueloses.innerText = `Défaites : ${json.response.fixtures.loses.total}`;
             stats.appendChild(ligueloses);
         });
 
