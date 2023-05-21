@@ -2197,6 +2197,7 @@ section.team h4 {
 
 #resume table{
 	margin-top: 168px;
+	display: inline-table;
 }
 
 .banner-homepage img{
@@ -2263,12 +2264,11 @@ section.team h4 {
 }
 #topbuts table{
 	margin-top: 10px;
-	font-size: 9px;
 
 }
 #classements table, #topassists table ,  #resume {
 	margin-top: 0;
-	font-size: 9px;
+
 }
 /********************** PAGE CONTACT **********************/
 #contactheader header{
@@ -2282,4 +2282,48 @@ section.team h4 {
 
 .voyelle{
 	color:red
+}
+
+/********************** PAGE CLUB **********************/
+.card  {
+	margin: 20px auto;
+	padding: 10px;
+}
+#name , #stats {
+	display: contents;
+}
+#photostade , #logoclub , #logoligue {
+	width: 100px;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 12px;
+
+}
+
+#club img {
+	width: 35px;
+}
+
+#classements{
+	margin-top: 170px;
+}
+#classements table{
+	margin-top: 20px;
+}
+#classements img  {
+	width: 20px;
+}
+
+/***********TABLES******/
+@media screen and (min-width: 1064px) {
+
+	table td, table tr {
+		font-size: 13px;
+
+	}
+
+}
+table {
+	font-size: 9px;
+	display: inline-table;
 }

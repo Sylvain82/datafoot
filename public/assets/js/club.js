@@ -168,6 +168,7 @@ function loadclub(club){
 
             for (l = 0; l < json.response.length; l++)
             {
+                if (json.response[l].statistics[0].games.appearences !== 0) {
                 console.log(json.response[l])
 
                 let tr = document.createElement('tr');
@@ -180,20 +181,20 @@ function loadclub(club){
                 tr.appendChild(td);
 
                 let textNode = [
-                    document.createTextNode(json.response[l].player.nationality),
+                    document.createTextNode(json.response[l].statistics[0].league.name),
                     document.createTextNode(json.response[l].player.firstname),
                     document.createTextNode(json.response[l].player.lastname),
+                    document.createTextNode(json.response[l].player.nationality),
                     document.createTextNode(json.response[l].player.age),
                     document.createTextNode(json.response[l].player.height),
                     document.createTextNode(json.response[l].player.weight),
                     document.createTextNode(json.response[l].statistics[0].games.position),
                     document.createTextNode(json.response[l].statistics[0].games.appearences),
                     document.createTextNode(Math.round((json.response[l].statistics[0].games.rating) * 100)/100),
-                    document.createTextNode(json.response[l].statistics[0].games.goals),
+                    document.createTextNode(json.response[l].statistics[0].goals.total),
                     document.createTextNode(json.response[l].statistics[0].cards.yellow),
                     document.createTextNode(json.response[l].statistics[0].cards.yellowred),
                     document.createTextNode(json.response[l].statistics[0].cards.red),
-                    document.createTextNode(json.response[l].statistics[0].league.name),
 
                 ]
                 for (let text of textNode) {
@@ -203,7 +204,7 @@ function loadclub(club){
                     tr.appendChild(td);
                 }
             }
-
+          }
 
         })
 
