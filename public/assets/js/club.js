@@ -8,7 +8,6 @@ selectElement.addEventListener('change', () => {
     while (name.firstChild) {
         name.removeChild(name.firstChild);
     }
-    //console.log(championnat);
     loadChampionnat(championnat);
 })
 function loadChampionnat() {
@@ -119,7 +118,7 @@ function loadclub(club){
         fetch(`https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=${championnat}&season=2022&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
-            console.log(json.response.league.name)
+
             while (stats.firstChild) {
                 stats.removeChild(stats.firstChild);
             }
@@ -140,7 +139,6 @@ function loadclub(club){
             let ligueform = document.createElement('p');
             ligueform.innerText = `Derniers résultats : ${json.response.form.match(/.{1,1}/g).slice( (json.response.form.match(/.{1,1}/g).length) -5 , json.response.form.match(/.{1,1}/g).length )}`;
             stats.appendChild(ligueform);
-            console.log(json.response.form)
 
             let liguematchs = document.createElement('p');
             liguematchs.innerText = `Matchs joués : ${json.response.fixtures.played.total}` ;
@@ -158,6 +156,57 @@ function loadclub(club){
             ligueloses.innerText = `Défaites : ${json.response.fixtures.loses.total}`;
             stats.appendChild(ligueloses);
         });
+
+    fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${club}&season=2022`, options)
+        .then(response => response.json())
+        .then(json => {
+
+            const tbody = document.querySelector('#club tbody');
+            while (tbody.firstChild) {
+                tbody.removeChild(tbody.firstChild);
+            }
+
+            for (l = 0; l < json.response.length; l++)
+            {
+                console.log(json.response[l])
+
+                let tr = document.createElement('tr');
+
+                let image = document.createElement('img');
+                image.src = json.response[l].player.photo;
+                td = document.createElement('td');
+                td.appendChild(image);
+                tbody.appendChild(tr);
+                tr.appendChild(td);
+
+                let textNode = [
+                    document.createTextNode(json.response[l].player.nationality),
+                    document.createTextNode(json.response[l].player.firstname),
+                    document.createTextNode(json.response[l].player.lastname),
+                    document.createTextNode(json.response[l].player.age),
+                    document.createTextNode(json.response[l].player.height),
+                    document.createTextNode(json.response[l].player.weight),
+                    document.createTextNode(json.response[l].statistics[0].games.position),
+                    document.createTextNode(json.response[l].statistics[0].games.appearences),
+                    document.createTextNode(Math.round((json.response[l].statistics[0].games.rating) * 100)/100),
+                    document.createTextNode(json.response[l].statistics[0].games.goals),
+                    document.createTextNode(json.response[l].statistics[0].cards.yellow),
+                    document.createTextNode(json.response[l].statistics[0].cards.yellowred),
+                    document.createTextNode(json.response[l].statistics[0].cards.red),
+                    document.createTextNode(json.response[l].statistics[0].league.name),
+
+                ]
+                for (let text of textNode) {
+                    td = document.createElement('td');
+                    td.appendChild(text);
+                    tbody.appendChild(tr);
+                    tr.appendChild(td);
+                }
+            }
+
+
+        })
+
 
 
     }
