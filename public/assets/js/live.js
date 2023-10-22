@@ -62,11 +62,15 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
     let textNode1 = [
         document.createTextNode(json.response[i].teams.home.name),
-        document.createTextNode(json.response[i].goals.home),
-        document.createTextNode(json.response[i].goals.away),
-        document.createTextNode(json.response[i].teams.away.name),
     ]
+     let textNode2 = [
+         document.createTextNode(json.response[i].goals.home),
+         document.createTextNode(json.response[i].goals.away),
 
+     ]
+     let textNode3 = [
+         document.createTextNode(json.response[i].teams.away.name),
+     ]
 
 
     for (let text of textNodeTemps) {
@@ -93,12 +97,37 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
         tr.appendChild(td);
 
     let tr1 = document.createElement('tr');
+
     for (let text of textNode1) {
     td = document.createElement('td');
     td.appendChild(text);
-    tbody.appendChild(tr);
+        tbody.appendChild(tr);
     tr.appendChild(td);
 }
+     if (json.response[i].fixture.status.long !== ("Match Finished")) {
+         for (let text of textNode2) {
+             td = document.createElement('td');
+             td.appendChild(text);
+             td.style.color = '#ffae00'
+             tbody.appendChild(tr);
+             tr.appendChild(td);
+         }
+     }else {
+         for (let text of textNode2) {
+             td = document.createElement('td');
+             td.appendChild(text);
+             td.style.color = '#FFF'
+             tbody.appendChild(tr);
+             tr.appendChild(td);
+         }
+     }
+
+     for (let text of textNode3) {
+         td = document.createElement('td');
+         td.appendChild(text);
+         tbody.appendChild(tr);
+         tr.appendChild(td);
+     }
         let image4 = document.createElement('img');
         image4.src = json.response[i].teams.away.logo;
         td = document.createElement('td');
