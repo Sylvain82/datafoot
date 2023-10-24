@@ -15,7 +15,7 @@ function loadChampionnat() {
             'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
         }
     };
-    fetch(`https://api-football-v1.p.rapidapi.com/v3/players/topassists?league=${championnat}&season=2022`, options)
+    fetch(`https://api-football-v1.p.rapidapi.com/v3/players/topassists?league=${championnat}&season=2023`, options)
         .then(response => response.json())
         .then(json => {
             console.log(json);

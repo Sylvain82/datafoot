@@ -16,7 +16,7 @@
             }
         };
 
-        fetch(`https://api-football-beta.p.rapidapi.com/players/topscorers?season=2022&league=${championnat}`, options)
+        fetch(`https://api-football-beta.p.rapidapi.com/players/topscorers?season=2023&league=${championnat}`, options)
 
         .then(response => response.json())
         .then(json => {
