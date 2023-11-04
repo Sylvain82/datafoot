@@ -33,16 +33,26 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
     let temps = (json.response[i].fixture.status.elapsed)
 
-    let textNode = [
-        document.createTextNode(json.response[i].league.country),
-    ]
+    // let textNode = [
+    //     document.createTextNode(json.response[i].league.country),
+    // ]
      let tr = document.createElement('tr');
-     for (let text of textNode) {
-         td = document.createElement('td');
-         td.appendChild(text);
-         tbody.appendChild(tr);
-         tr.appendChild(td);
-     }
+    //
+    //
+    //  for (let text of textNode) {
+    //      td = document.createElement('td');
+    //      td.appendChild(text);
+    //      tbody.appendChild(tr);
+    //      tr.appendChild(td);
+    //  }
+                     let image1 = document.createElement('img');
+                     image1.src = json.response[i].league.flag;
+                     td = document.createElement('td');
+                     td.appendChild(image1);
+                     tbody.appendChild(tr);
+                     tr.appendChild(td);
+
+
      let image5 = document.createElement('img');
     if (json.response[i].fixture.status.long !== ("Match Finished")) {
         image5.src = "https://aniportalimages.s3.amazonaws.com/static/img/red-dot.gif";
@@ -135,12 +145,12 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
         tbody.appendChild(tr);
         tr.appendChild(td);
 
-    let image1 = document.createElement('img');
-    image1.src = json.response[i].league.flag;
-    td = document.createElement('td');
-    td.appendChild(image1);
-    tbody.appendChild(tr);
-    tr.appendChild(td);
+    // let image1 = document.createElement('img');
+    // image1.src = json.response[i].league.flag;
+    // td = document.createElement('td');
+    // td.appendChild(image1);
+    // tbody.appendChild(tr);
+    // tr.appendChild(td);
 
     let image2 = document.createElement('img');
     image2.src = json.response[i].league.logo;
