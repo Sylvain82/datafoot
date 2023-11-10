@@ -13,15 +13,13 @@ MyDateString = MyDate.toISOString().slice(0,10)
 //     + ("0" + (MyDate.getMonth()) + 1) + "-"
 //     + ("0" + MyDate.getDate()).slice(-2);
 
-console.log(MyDate.toISOString().slice(0,10))
-console.log(MyDateString)
 
 // *************************************************************
 
 fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, options)
     .then(response => response.json())
     .then(json => {
-        console.log(json.response[0])
+        console.log(json.response)
 
     const tbody = document.querySelector('#liveTable tbody');
 
@@ -33,24 +31,14 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
 
     let temps = (json.response[i].fixture.status.elapsed)
 
-    // let textNode = [
-    //     document.createTextNode(json.response[i].league.country),
-    // ]
      let tr = document.createElement('tr');
-    //
-    //
-    //  for (let text of textNode) {
-    //      td = document.createElement('td');
-    //      td.appendChild(text);
-    //      tbody.appendChild(tr);
-    //      tr.appendChild(td);
-    //  }
-                     let image1 = document.createElement('img');
-                     image1.src = json.response[i].league.flag;
-                     td = document.createElement('td');
-                     td.appendChild(image1);
-                     tbody.appendChild(tr);
-                     tr.appendChild(td);
+
+     let image1 = document.createElement('img');
+     image1.src = json.response[i].league.flag;
+     td = document.createElement('td');
+     td.appendChild(image1);
+     tbody.appendChild(tr);
+     tr.appendChild(td);
 
 
      let image5 = document.createElement('img');
@@ -73,31 +61,53 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
     let textNode1 = [
         document.createTextNode(json.response[i].teams.home.name),
     ]
+         let butH = (json.response[i].goals.home);
+         let butA = (json.response[i].goals.away);
      let textNode2 = [
-         document.createTextNode(json.response[i].goals.home),
-         document.createTextNode(json.response[i].goals.away),
+
+         document.createTextNode(butH),
+         document.createTextNode(butA),
 
      ]
      let textNode3 = [
          document.createTextNode(json.response[i].teams.away.name),
      ]
+                     if (json.response[i].fixture.status.long !== ("Match Finished")) {
+                         for (let text of textNodeTemps) {
+                             td = document.createElement('td');
 
+                             td.appendChild(text);
+                             tbody.appendChild(tr);
+                             tr.appendChild(td);
 
-    for (let text of textNodeTemps) {
-    td = document.createElement('td');
-    td.appendChild(text);
-    tbody.appendChild(tr);
+                         }}
+                      else {
+                         for (let text of textNodeTemps) {
+                             td = document.createElement('td');
+                             text.nodeValue = 'FT'
+                             td.style.color = "#00FF00";
+                             td.appendChild(text);
+                             tbody.appendChild(tr);
+                             tr.appendChild(td);
 
-    if (temps > 89) {
-    td.style.color = "#white";
-
-    }else {
-        td.style.color = "#00FF00";
-    }
-
-    tr.appendChild(td);
-
-    }
+                     }}
+    //
+    // for (let text of textNodeTemps) {
+    // td = document.createElement('td');
+    // td.appendChild(text);
+    // tbody.appendChild(tr);
+    //
+    // if (temps > 89) {
+    //
+    // td.style.color = "#white";
+    //
+    // }else {
+    //     td.style.color = "#00FF00";
+    // }
+    //
+    // tr.appendChild(td);
+    //
+    // }
 
         let image3 = document.createElement('img');
         image3.src = json.response[i].teams.home.logo;
@@ -106,7 +116,6 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
         tbody.appendChild(tr);
         tr.appendChild(td);
 
-    let tr1 = document.createElement('tr');
 
     for (let text of textNode1) {
     td = document.createElement('td');
@@ -118,7 +127,7 @@ fetch(`https://api-football-beta.p.rapidapi.com/fixtures?date=${MyDateString}`, 
          for (let text of textNode2) {
              td = document.createElement('td');
              td.appendChild(text);
-             td.style.color = '#ffae00'
+             td.style.color = '#00ffff'
              tbody.appendChild(tr);
              tr.appendChild(td);
          }
