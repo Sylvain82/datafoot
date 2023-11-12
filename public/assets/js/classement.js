@@ -11,13 +11,14 @@ function loadChampionnat() {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': 'f8602f40b0mshda89fc84d2b8fd7p1d230ejsn0863e51df899',
-            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
         }
     };
 
-    fetch(`https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=${championnat}`, options)
+    fetch(`https://api-football-beta.p.rapidapi.com/standings?season=2023&league=${championnat}`, options)
         .then(response => response.json())
         .then(json => {
+            console.log(json.response)
             const tbody = document.querySelector('#classements tbody');
             while (tbody.firstChild) {
                 tbody.removeChild(tbody.firstChild);

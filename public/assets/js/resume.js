@@ -17,14 +17,15 @@ for (i=0 ; i<response.length; i++){
 
     if ((response[i].competition.name=== "ITALY: Serie A") || (response[i].competition.name=== "FRANCE: Ligue 1") ||(response[i].competition.name=== "ENGLAND: Premier League") || (response[i].competition.name=== "SPAIN: La Liga") ){
 
-    let link = response[i].url;
+    let lien = (response[i].url);
+
+        let objLink = document.createElement('a');
 
     let textNode = [
 
         document.createTextNode(response[i].title),
         document.createTextNode(response[i].competition.name),
-        document.createTextNode(link),
-
+        document.createTextNode(objLink.setAttribute('href', lien))
     ]
 
     let tr = document.createElement('tr');
@@ -34,6 +35,7 @@ for (i=0 ; i<response.length; i++){
         tbody.appendChild(tr);
         tr.appendChild(td);
 
-    }}
+            }
+        }
     }
     })
