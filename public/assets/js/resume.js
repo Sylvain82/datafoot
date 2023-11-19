@@ -19,13 +19,10 @@ for (i=0 ; i<response.length; i++){
 
     let lien = (response[i].url);
 
-        let objLink = document.createElement('a');
-
     let textNode = [
-
         document.createTextNode(response[i].title),
         document.createTextNode(response[i].competition.name),
-        document.createTextNode(objLink.setAttribute('href', lien))
+        document.createTextNode(lien)
     ]
 
     let tr = document.createElement('tr');
