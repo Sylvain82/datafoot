@@ -3,6 +3,7 @@ const stats = document.getElementById('stats')
 const selectElement = document.querySelector('.selector');
 let championnat = document.getElementById('mySelect').value;
 loadChampionnat(championnat);
+
 selectElement.addEventListener('change', () => {
     championnat = document.getElementById('mySelect').value;
     while (name.firstChild) {
@@ -10,19 +11,23 @@ selectElement.addEventListener('change', () => {
     }
     loadChampionnat(championnat);
 })
+
 function loadChampionnat() {
     const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': 'f8602f40b0mshda89fc84d2b8fd7p1d230ejsn0863e51df899',
-            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
         }
     };
 
-    fetch(`https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=${championnat}`, options)
+    fetch(`https://api-football-beta.p.rapidapi.com/teams?league=${championnat}&season=2023`, options)
         .then(response => response.json())
         .then(json => {
-                const select = document.getElementById('selectClub')
+            console.log(json.response)
+            const select = document.getElementById('selectClub')
+
+
             while (name.firstChild) {
                 name.removeChild(name.firstChild);
             }
@@ -35,8 +40,8 @@ function loadChampionnat() {
             for (i = 0;  json.response.length; i++) {
                 // let arr = json.response[0].league.standings[0][i].team.name
                     let opt = document.createElement('option');
-                    opt.value = json.response[0].league.standings[0][i].team.id;
-                    opt.innerText =  json.response[0].league.standings[0][i].team.name
+                    opt.value = json.response[i].team.id;
+                    opt.innerText =  json.response[i].team.name
                     select.appendChild(opt)
 
             }
@@ -64,17 +69,14 @@ function loadclub(club){
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': 'f8602f40b0mshda89fc84d2b8fd7p1d230ejsn0863e51df899',
-            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
         }
     };
 
 
-    fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?id=${club}`, options)
+    fetch(`https://api-football-beta.p.rapidapi.com/teams?id=${club}`, options)
         .then(response => response.json())
         .then(json => {
-                // let nom = json.response[0].team.name
-
-                // name.removeChild();
             while (name.firstChild) {
                 name.removeChild(name.firstChild);
             }
@@ -115,7 +117,7 @@ function loadclub(club){
         .catch(err => console.error(err));
 
 
-        fetch(`https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=${championnat}&season=2022&team=${club}`, options)
+        fetch(`https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=${championnat}&season=2023&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
 
@@ -157,7 +159,7 @@ function loadclub(club){
             stats.appendChild(ligueloses);
         });
 
-    fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${club}&season=2022`, options)
+    fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${club}&season=2023`, options)
         .then(response => response.json())
         .then(json => {
 
@@ -169,7 +171,6 @@ function loadclub(club){
             for (l = 0; l < json.response.length; l++)
             {
                 if (json.response[l].statistics[0].games.appearences !== 0) {
-                console.log(json.response[l])
 
                 let tr = document.createElement('tr');
 
