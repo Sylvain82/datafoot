@@ -117,7 +117,7 @@ function loadclub(club){
         .catch(err => console.error(err));
 
 
-        fetch(`https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=${championnat}&season=2023&team=${club}`, options)
+        fetch(`https://api-football-beta.p.rapidapi.com/teams/statistics?league=${championnat}&season=2023&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
 
@@ -159,7 +159,7 @@ function loadclub(club){
             stats.appendChild(ligueloses);
         });
 
-    fetch(`https://api-football-v1.p.rapidapi.com/v3/players?team=${club}&season=2023`, options)
+    fetch(`https://api-football-beta.p.rapidapi.com/players?team=${club}&season=2023`, options)
         .then(response => response.json())
         .then(json => {
 
