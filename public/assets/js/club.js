@@ -47,11 +47,9 @@ function loadChampionnat() {
             }
 
 })
-
         .catch(err => {
             console.error(err);
         })
-
 
 const selectClub = document.querySelector('.selectionClub');
 let club = document.getElementById('selectClub').value;
@@ -120,6 +118,7 @@ function loadclub(club){
         fetch(`https://api-football-beta.p.rapidapi.com/teams/statistics?league=${championnat}&season=2023&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
+            console.log(json.response)
 
             while (stats.firstChild) {
                 stats.removeChild(stats.firstChild);
@@ -157,6 +156,25 @@ function loadclub(club){
             let ligueloses = document.createElement('p');
             ligueloses.innerText = `Défaites : ${json.response.fixtures.loses.total}`;
             stats.appendChild(ligueloses);
+
+            let ButsTotal = document.createElement('p');
+            ButsTotal.innerText = `Buts : ${json.response.goals.for.total.total}`;
+            stats.appendChild(ButsTotal);
+
+
+            let ButAverage = document.createElement('p');
+            ButAverage.innerText = `Buts / match : ${json.response.goals.for.average.total}`;
+            stats.appendChild(ButAverage);
+
+            let ButsEncTotal = document.createElement('p');
+            ButsEncTotal.innerText = `Buts encaissés : ${json.response.goals.against.total.total}`;
+            stats.appendChild(ButsEncTotal);
+
+            let ButEncAverage = document.createElement('p');
+            ButEncAverage.innerText = `Buts encaissés / match : ${json.response.against.for.average.total}`;
+            stats.appendChild(ButEncAverage);
+
+
         });
 
     fetch(`https://api-football-beta.p.rapidapi.com/players?team=${club}&season=2023`, options)
