@@ -24,7 +24,6 @@ function loadChampionnat() {
     fetch(`https://api-football-beta.p.rapidapi.com/teams?league=${championnat}&season=2023`, options)
         .then(response => response.json())
         .then(json => {
-            console.log(json.response)
             const select = document.getElementById('selectClub')
 
 
@@ -60,6 +59,7 @@ selectClub.addEventListener('change', () => {
     }
 
     club = document.getElementById('selectClub').value;
+
     loadclub(club);
 })
 function loadclub(club){
@@ -118,7 +118,6 @@ function loadclub(club){
         fetch(`https://api-football-beta.p.rapidapi.com/teams/statistics?league=${championnat}&season=2023&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
-            console.log(json.response)
 
             while (stats.firstChild) {
                 stats.removeChild(stats.firstChild);
@@ -227,8 +226,60 @@ function loadclub(club){
 
         })
 
+    fetch(`https://api-football-beta.p.rapidapi.com/fixtures?last=1&team=${club}`, options)
+        .then(response => response.json())
+        .then(json => {
+
+            let lastmatch = json.response[0].fixture.id;
+            console.log(lastmatch)
+                loadlast(lastmatch);
+
+        })
+
+    function loadlast(lastmatch) {
+
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'f8602f40b0mshda89fc84d2b8fd7p1d230ejsn0863e51df899',
+                'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
+            }
+        };
+
+        fetch(`https://api-football-beta.p.rapidapi.com/fixtures/players?fixture=${lastmatch}`, options)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json.response[0])
+                const tbody2 = document.querySelector('#statlastmatch tbody');
+                    for (r = 0; r < json.response[0].players.length; r++) {
+                          // if (json.response[0].team.id === club) {
+                            let tr2 = document.createElement('tr');
+                            let textNode2 = [
+                                document.createTextNode(json.response[0].players[r].player.name),
+                                document.createTextNode(json.response[0].players[r].statistics[0].games.rating),
+                                document.createTextNode(json.response[0].players[r].statistics[0].goals.total),
+                                document.createTextNode(json.response[0].players[r].statistics[0].goals.assists),
+                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.attempts),
+                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.past),
+                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.success),
+                                document.createTextNode(json.response[0].players[r].statistics[0].duels.total),
+                                document.createTextNode(json.response[0].players[r].statistics[0].duels.won),
+                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.committed),
+                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.drawn),
+                            ]
+
+                            for (let text of textNode2) {
+                                td2 = document.createElement('td');
+                                td2.appendChild(text);
+                                tbody2.appendChild(tr2);
+                                tr2.appendChild(td2);
+                            }
+
+                        }
 
 
+                }
+            )
+        }
     }
-
 }
