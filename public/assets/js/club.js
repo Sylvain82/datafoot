@@ -111,7 +111,6 @@ function loadclub(club){
 
            })
 
-
         .catch(err => console.error(err));
 
 
@@ -226,13 +225,39 @@ function loadclub(club){
 
         })
 
+
     fetch(`https://api-football-beta.p.rapidapi.com/fixtures?last=1&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
+            console.log(json.response)
+            para =document.createElement("p")
+            para.innerText = "Last match"
+            para.style.color = "#0cf51f"
+            document.appendChild(para)
+
+            const tbody3 = document.querySelector('#dateLastMatch tbody');
+                let tr3 = document.createElement('tr');
+
+            let textNode3 = [
+                    // document.createTextNode(json.response[0].fixtures.timestamp),
+                    document.createTextNode(json.response[0].league.name),
+                    document.createTextNode(json.response[0].league.round),
+                    document.createTextNode(json.response[0].fixture.venue.name),
+                    document.createTextNode(json.response[0].fixture.referee),
+                    document.createTextNode(json.response[0].teams.home.name),
+                    document.createTextNode(json.response[0].score.fulltime.home),
+                    document.createTextNode(json.response[0].score.fulltime.away),
+                    document.createTextNode(json.response[0].teams.away.name),
+                    ]
+            for (let text of textNode3) {
+                td3 = document.createElement('td');
+                td3.appendChild(text);
+                tbody3.appendChild(tr3);
+                tr3.appendChild(td3);
+            }
 
             let lastmatch = json.response[0].fixture.id;
-            console.log(lastmatch)
-                loadlast(lastmatch);
+                    loadlast(lastmatch);
 
         })
 
@@ -246,10 +271,9 @@ function loadclub(club){
             }
         };
 
-        fetch(`https://api-football-beta.p.rapidapi.com/fixtures/players?fixture=${lastmatch}`, options)
+        fetch(`https://api-football-beta.p.rapidapi.com/fixtures/players?fixture=${lastmatch}&team=${club}`, options)
             .then(response => response.json())
             .then(json => {
-                console.log(json.response[0])
                 const tbody2 = document.querySelector('#statlastmatch tbody');
                     for (r = 0; r < json.response[0].players.length; r++) {
                           // if (json.response[0].team.id === club) {

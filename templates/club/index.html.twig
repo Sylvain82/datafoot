@@ -4,6 +4,11 @@
 
 {% block content %}
 
+    <style>
+        #club table {
+            margin: 10px auto;
+        }
+    </style>
     <div id="classements">
         <form>
             <label for="mySelect">Ligue</label>
@@ -48,7 +53,7 @@
 
     </div>
 
-
+    <div id="club">
 
     <div class="card" style="width: 80%;">
 
@@ -65,6 +70,7 @@
 
     </div>
 
+    <div><p style="color: white">Seasons Players Stats</p></div>
 
     <table class="table table-striped table-primary table-dark table-responsive" id="club">
         <thead>
@@ -77,7 +83,7 @@
         <th scope="col">Height</th>
         <th scope="col">Weight</th>
         <th scope="col">Position</th>
-        <th scope="col">Appearences</th>
+        <th scope="col">Appearances</th>
         <th scope="col">Rating</th>
         <th scope="col">Goals</th>
         <th scope="col">Yellow</th>
@@ -89,6 +95,28 @@
 
         </tbody>
     </table>
+
+    <div><p style="color: white">Last Match</p></div>
+
+    <table class="table table-striped table-primary table-dark table-responsive" id="dateLastMatch">
+        <thead>
+        <th scope="col">Date</th>
+        <th scope="col">League</th>
+        <th scope="col">Round</th>
+        <th scope="col">Stadium</th>
+        <th scope="col">Referee</th>
+        <th scope="col">Home </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">Away</th>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div><p style="color: white">Last Match Stats</p></div>
 
 
     <table class="table table-striped table-primary table-dark table-responsive" id="statlastmatch">
@@ -112,7 +140,7 @@
         </tbody>
     </table>
 
-
+    </div>
 
     <script src="{{ asset('assets/js/club.js') }}" type="text/javascript"></script>
 
