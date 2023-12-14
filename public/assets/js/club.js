@@ -225,15 +225,10 @@ function loadclub(club){
 
         })
 
-
     fetch(`https://api-football-beta.p.rapidapi.com/fixtures?last=1&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
             console.log(json.response)
-            para =document.createElement("p")
-            para.innerText = "Last match"
-            para.style.color = "#0cf51f"
-            document.appendChild(para)
 
             const tbody3 = document.querySelector('#dateLastMatch tbody');
                 let tr3 = document.createElement('tr');
@@ -261,6 +256,7 @@ function loadclub(club){
 
         })
 
+// LAST MATCH
     function loadlast(lastmatch) {
 
         const options = {
@@ -270,6 +266,7 @@ function loadclub(club){
                 'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
             }
         };
+
 
         fetch(`https://api-football-beta.p.rapidapi.com/fixtures/players?fixture=${lastmatch}&team=${club}`, options)
             .then(response => response.json())
