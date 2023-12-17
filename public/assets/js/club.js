@@ -75,6 +75,8 @@ function loadclub(club){
     fetch(`https://api-football-beta.p.rapidapi.com/teams?id=${club}`, options)
         .then(response => response.json())
         .then(json => {
+            console.log(json.response[0])
+
             while (name.firstChild) {
                 name.removeChild(name.firstChild);
             }
@@ -228,7 +230,6 @@ function loadclub(club){
     fetch(`https://api-football-beta.p.rapidapi.com/fixtures?last=1&team=${club}`, options)
         .then(response => response.json())
         .then(json => {
-            console.log(json.response)
 
             const tbody3 = document.querySelector('#dateLastMatch tbody');
                 let tr3 = document.createElement('tr');
@@ -245,6 +246,7 @@ function loadclub(club){
                     document.createTextNode(json.response[0].teams.away.name),
                     ]
             for (let text of textNode3) {
+
                 td3 = document.createElement('td');
                 td3.appendChild(text);
                 tbody3.appendChild(tr3);
@@ -257,6 +259,7 @@ function loadclub(club){
         })
 
 // LAST MATCH
+
     function loadlast(lastmatch) {
 
         const options = {
