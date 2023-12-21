@@ -189,42 +189,42 @@ function loadChampionnat() {
                 }
 
                 for (l = 0; l < json.response.length; l++) {
-                    if (json.response[l].statistics[0].games.appearences !== 0) {
+                    // if (json.response[l].statistics[0].games.appearences !== 0) {
 
-                        let tr = document.createElement('tr');
+                    let tr = document.createElement('tr');
 
-                        let image = document.createElement('img');
-                        image.src = json.response[l].player.photo;
+                    let image = document.createElement('img');
+                    image.src = json.response[l].player.photo;
+                    td = document.createElement('td');
+                    td.appendChild(image);
+                    tbody.appendChild(tr);
+                    tr.appendChild(td);
+
+                    let textNode = [
+                        document.createTextNode(json.response[l].statistics[0].league.name || 0),
+                        document.createTextNode(json.response[l].player.firstname || 0),
+                        document.createTextNode(json.response[l].player.lastname || 0),
+                        document.createTextNode(json.response[l].player.nationality || 0),
+                        document.createTextNode(json.response[l].player.age || 0),
+                        document.createTextNode(json.response[l].player.height || 0),
+                        document.createTextNode(json.response[l].player.weight || 0),
+                        document.createTextNode(json.response[l].statistics[0].games.position || 0),
+                        document.createTextNode(json.response[l].statistics[0].games.appearences || 0),
+                        document.createTextNode(Math.round((json.response[l].statistics[0].games.rating) * 100) / 100),
+                        document.createTextNode(json.response[l].statistics[0].goals.total || 0),
+                        document.createTextNode(json.response[l].statistics[0].cards.yellow || 0),
+                        document.createTextNode(json.response[l].statistics[0].cards.yellowred || 0),
+                        document.createTextNode(json.response[l].statistics[0].cards.red || 0),
+
+                    ]
+                    for (let text of textNode) {
                         td = document.createElement('td');
-                        td.appendChild(image);
+                        td.appendChild(text);
                         tbody.appendChild(tr);
                         tr.appendChild(td);
-
-                        let textNode = [
-                            document.createTextNode(json.response[l].statistics[0].league.name),
-                            document.createTextNode(json.response[l].player.firstname),
-                            document.createTextNode(json.response[l].player.lastname),
-                            document.createTextNode(json.response[l].player.nationality),
-                            document.createTextNode(json.response[l].player.age),
-                            document.createTextNode(json.response[l].player.height),
-                            document.createTextNode(json.response[l].player.weight),
-                            document.createTextNode(json.response[l].statistics[0].games.position),
-                            document.createTextNode(json.response[l].statistics[0].games.appearences),
-                            document.createTextNode(Math.round((json.response[l].statistics[0].games.rating) * 100) / 100),
-                            document.createTextNode(json.response[l].statistics[0].goals.total),
-                            document.createTextNode(json.response[l].statistics[0].cards.yellow),
-                            document.createTextNode(json.response[l].statistics[0].cards.yellowred),
-                            document.createTextNode(json.response[l].statistics[0].cards.red),
-
-                        ]
-                        for (let text of textNode) {
-                            td = document.createElement('td');
-                            td.appendChild(text);
-                            tbody.appendChild(tr);
-                            tr.appendChild(td);
-                        }
                     }
                 }
+                // }
 
             })
 
@@ -277,32 +277,33 @@ function loadChampionnat() {
                 .then(json => {
                         const tbody2 = document.querySelector('#statlastmatch tbody');
                         for (r = 0; r < json.response[0].players.length; r++) {
-                            // if (json.response[0].team.id === club) {
-                            let tr2 = document.createElement('tr');
-                            let textNode2 = [
-                                document.createTextNode(json.response[0].players[r].player.name || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].games.rating || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].goals.total || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].goals.assists || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.attempts || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.past || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.success || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].duels.total || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].duels.won || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.committed || 0),
-                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.drawn || 0),
-                            ]
+                            if (json.response[0].players[r].statistics[0].games.rating) {
+                                let tr2 = document.createElement('tr');
+                                let textNode2 = [
+                                    document.createTextNode(json.response[0].players[r].player.name || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].games.rating || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].goals.total || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].goals.assists || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].dribbles.attempts || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].dribbles.past || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].dribbles.success || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].duels.total || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].duels.won || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].fouls.committed || 0),
+                                    document.createTextNode(json.response[0].players[r].statistics[0].fouls.drawn || 0),
+                                ]
 
-                            for (let text of textNode2) {
-                                td2 = document.createElement('td');
-                                td2.appendChild(text);
-                                tbody2.appendChild(tr2);
-                                tr2.appendChild(td2);
+                                for (let text of textNode2) {
+                                    td2 = document.createElement('td');
+                                    td2.appendChild(text);
+                                    tbody2.appendChild(tr2);
+                                    tr2.appendChild(td2);
+                                }
+
                             }
 
+
                         }
-
-
                     }
                 )
         }
