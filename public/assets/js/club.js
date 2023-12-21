@@ -165,15 +165,15 @@ function loadChampionnat() {
 
 
                 let ButAverage = document.createElement('p');
-                ButAverage.innerText = `Buts / match : ${json.response.goals.for.average.total}`;
+                ButAverage.innerText = `Buts / match : ${(json.response.goals.for.average.total) || 0}`;
                 stats.appendChild(ButAverage);
 
                 let ButsEncTotal = document.createElement('p');
-                ButsEncTotal.innerText = `Buts encaissés : ${json.response.goals.against.total.total}`;
+                ButsEncTotal.innerText = `Buts encaissés : ${(json.response.goals.against.total.total) || 0}`;
                 stats.appendChild(ButsEncTotal);
 
                 let ButEncAverage = document.createElement('p');
-                ButEncAverage.innerText = `Buts encaissés / match : ${json.response.against.for.average.total}`;
+                ButEncAverage.innerText = `Buts encaissés / match : ${(json.response.against.for.average.total) || 0}`;
                 stats.appendChild(ButEncAverage);
 
 
@@ -237,14 +237,14 @@ function loadChampionnat() {
 
                 let textNode3 = [
                     // document.createTextNode(json.response[0].fixtures.timestamp),
-                    document.createTextNode(json.response[0].league.name),
-                    document.createTextNode(json.response[0].league.round),
-                    document.createTextNode(json.response[0].fixture.venue.name),
-                    document.createTextNode(json.response[0].fixture.referee),
-                    document.createTextNode(json.response[0].teams.home.name),
-                    document.createTextNode(json.response[0].score.fulltime.home),
-                    document.createTextNode(json.response[0].score.fulltime.away),
-                    document.createTextNode(json.response[0].teams.away.name),
+                    document.createTextNode(json.response[0].league.name || 0),
+                    document.createTextNode(json.response[0].league.round || 0),
+                    document.createTextNode(json.response[0].fixture.venue.name || 0),
+                    document.createTextNode(json.response[0].fixture.referee || 0),
+                    document.createTextNode(json.response[0].teams.home.name || 0),
+                    document.createTextNode(json.response[0].score.fulltime.home || 0),
+                    document.createTextNode(json.response[0].score.fulltime.away || 0),
+                    document.createTextNode(json.response[0].teams.away.name || 0),
                 ]
                 for (let text of textNode3) {
 
@@ -280,17 +280,17 @@ function loadChampionnat() {
                             // if (json.response[0].team.id === club) {
                             let tr2 = document.createElement('tr');
                             let textNode2 = [
-                                document.createTextNode(json.response[0].players[r].player.name),
-                                document.createTextNode(json.response[0].players[r].statistics[0].games.rating),
-                                document.createTextNode(json.response[0].players[r].statistics[0].goals.total),
-                                document.createTextNode(json.response[0].players[r].statistics[0].goals.assists),
-                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.attempts),
-                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.past),
-                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.success),
-                                document.createTextNode(json.response[0].players[r].statistics[0].duels.total),
-                                document.createTextNode(json.response[0].players[r].statistics[0].duels.won),
-                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.committed),
-                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.drawn),
+                                document.createTextNode(json.response[0].players[r].player.name || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].games.rating || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].goals.total || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].goals.assists || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.attempts || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.past || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].dribbles.success || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].duels.total || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].duels.won || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.committed || 0),
+                                document.createTextNode(json.response[0].players[r].statistics[0].fouls.drawn || 0),
                             ]
 
                             for (let text of textNode2) {
