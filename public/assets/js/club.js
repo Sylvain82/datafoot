@@ -281,7 +281,27 @@ function loadChampionnat() {
                                 let tr2 = document.createElement('tr');
                                 let textNode2 = [
                                     document.createTextNode(json.response[0].players[r].player.name || 0),
+
+                                ]
+
+                                for (let text of textNode2) {
+                                    td2 = document.createElement('td');
+                                    td2.appendChild(text);
+                                    tbody2.appendChild(tr2);
+                                    tr2.appendChild(td2);
+                                }
+                                let textNode3 = [
                                     document.createTextNode(json.response[0].players[r].statistics[0].games.rating || 0),
+                                ]
+
+                                for (let text of textNode3) {
+                                    td2 = document.createElement('td');
+                                    td2.appendChild(text);
+                                    td.style.color = '#00FF00'
+                                    tbody2.appendChild(tr2);
+                                    tr2.appendChild(td2);
+                                }
+                                let textNode4 = [
                                     document.createTextNode(json.response[0].players[r].statistics[0].goals.total || 0),
                                     document.createTextNode(json.response[0].players[r].statistics[0].goals.assists || 0),
                                     document.createTextNode(json.response[0].players[r].statistics[0].dribbles.attempts || 0),
@@ -293,7 +313,7 @@ function loadChampionnat() {
                                     document.createTextNode(json.response[0].players[r].statistics[0].fouls.drawn || 0),
                                 ]
 
-                                for (let text of textNode2) {
+                                for (let text of textNode4) {
                                     td2 = document.createElement('td');
                                     td2.appendChild(text);
                                     tbody2.appendChild(tr2);
