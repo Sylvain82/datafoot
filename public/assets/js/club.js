@@ -297,7 +297,7 @@ function loadChampionnat() {
                                 for (let text of textNode3) {
                                     td2 = document.createElement('td');
                                     td2.appendChild(text);
-                                    td.style.color = '#00FF00'
+                                    td2.style.color = '#00FF00'
                                     tbody2.appendChild(tr2);
                                     tr2.appendChild(td2);
                                 }
