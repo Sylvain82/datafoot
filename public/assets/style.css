@@ -2224,7 +2224,7 @@ section.team h4 {
 
 }
 
-#liveTable tbody tr, #liveTable tbody td, #liveTable tr th {
+#liveTable tbody tr, #liveTable tbody td, #liveTable tr th,  {
     font-size: 9px;
 }
 
@@ -2275,9 +2275,9 @@ section.team h4 {
 
 }
 
-#classements table, #topassists table, #resume {
+#classements table, #topassists table, #resume #liveTable, #topscorers,#statlastmatchdiv table, #dateLastMatchdiv  table, #tableclubdiv table  {
     margin-top: 0;
-    text-align: center;
+    display: inline-table;
 
 }
 
