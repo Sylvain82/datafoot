@@ -2224,7 +2224,7 @@ section.team h4 {
 
 }
 
-#liveTable tbody tr, #liveTable tbody td, #liveTable tr th,  {
+#liveTable tbody tr, #liveTable tbody td, #liveTable tr th  {
     font-size: 9px;
 }
 
