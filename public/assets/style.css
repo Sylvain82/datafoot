@@ -2275,7 +2275,7 @@ section.team h4 {
 
 }
 
-#classements table, #topassists table, #resume #liveTable, #topscorers,#statlastmatchdiv table, #dateLastMatchdiv  table, #tableclubdiv table  {
+  #classements table, #topassists table, #resume #liveTable, #topscorers,#statlastmatchdiv table, #dateLastMatchdiv  table, #tableclubdiv table  {
     margin-top: 0;
     display: inline-table;
 
@@ -2350,4 +2350,13 @@ section.team h4 {
 table {
     font-size: 9px;
     display: inline-table;
+}
+/*°°°°°°°°°°°°°°°°°°Matchs°°°°°°°°°°°°°°°°°°°°°°*/
+#betTable{
+    margin-top: 14px;
+    display: inline-table;
+}
+#bet h1{
+    margin-top: 200px;
+    color: whitesmoke;
 }
