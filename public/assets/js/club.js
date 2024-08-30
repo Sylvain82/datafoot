@@ -22,7 +22,7 @@ function loadChampionnat() {
         }
     };
 
-    fetch(`https://api-football-beta.p.rapidapi.com/teams?league=${championnat}&season=2023`, options)
+    fetch(`https://api-football-beta.p.rapidapi.com/teams?league=${championnat}&season=2024`, options)
         .then(response => response.json())
         .then(json => {
             const select = document.getElementById('selectClub')
@@ -118,7 +118,7 @@ function loadChampionnat() {
             .catch(err => console.error(err));
 
 
-        fetch(`https://api-football-beta.p.rapidapi.com/teams/statistics?league=${championnat}&season=2023&team=${club}`, options)
+        fetch(`https://api-football-beta.p.rapidapi.com/teams/statistics?league=${championnat}&season=2024&team=${club}`, options)
             .then(response => response.json())
             .then(json => {
 
@@ -179,7 +179,7 @@ function loadChampionnat() {
 
             });
 
-        fetch(`https://api-football-beta.p.rapidapi.com/players?team=${club}&season=2023`, options)
+        fetch(`https://api-football-beta.p.rapidapi.com/players?team=${club}&season=2024`, options)
             .then(response => response.json())
             .then(json => {
 

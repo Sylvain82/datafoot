@@ -15,7 +15,7 @@ function loadChampionnat() {
         }
     };
 
-    fetch(`https://api-football-beta.p.rapidapi.com/standings?season=2023&league=${championnat}`, options)
+    fetch(`https://api-football-beta.p.rapidapi.com/standings?season=2024&league=${championnat}`, options)
         .then(response => response.json())
         .then(json => {
             console.log(json.response)
